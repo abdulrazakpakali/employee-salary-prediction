@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: employee-salary-predictor
+    env: python
+    buildCommand: ""
+    startCommand: gunicorn app:app
+    region: oregon
+    plan: free
+    runtime: python
