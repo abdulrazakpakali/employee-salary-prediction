@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Employee Salary Prediction</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1f4037, #99f2c8);
+      color: #fff;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #fff;
+      text-shadow: 0 0 10px #0f0;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #222;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 4px;
+      border: none;
+      font-size: 16px;
+    }
+    button {
+      margin-top: 25px;
+      width: 100%;
+      background-color: #0f0;
+      color: #000;
+      font-weight: bold;
+      font-size: 18px;
+      border: none;
+      padding: 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #0f0;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #0c0;
+      color: #fff;
+    }
+    .result {
+      margin-top: 30px;
+      font-size: 22px;
+      font-weight: bold;
+      color: #fff;
+      text-align: center;
+      text-shadow: 0 0 8px #0f0;
+    }
+  </style>
+</head>
+<body>
+  <h2>Employee Salary Prediction</h2>
+  <form method="POST" action="/predict">
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" required />
+
+    <label for="education">Education</label>
+    <select name="education" id="education" required>
+      <option value="">Select</option>
+      <option value="Bachelors">Bachelors</option>
+      <option value="Masters">Masters</option>
+      <option value="PhD">PhD</option>
+      <option value="High School">High School</option>
+      <option value="Diploma">Diploma</option>
+    </select>
+
+    <label for="age">Age</label>
+    <input type="number" name="age" id="age" min="18" max="65" required />
+
+    <label for="experience">Experience (years)</label>
+    <input type="number" name="experience" id="experience" min="0" max="50" step="0.1" required />
+
+    <label for="job_role">Job Role</label>
+    <select name="job_role" id="job_role" required>
+      <option value="">Select</option>
+      <option value="Developer">Developer</option>
+      <option value="Data Scientist">Data Scientist</option>
+      <option value="Manager">Manager</option>
+      <option value="Tester">Tester</option>
+      <option value="Designer">Designer</option>
+      <option value="DevOps Engineer">DevOps Engineer</option>
+      <option value="Analyst">Analyst</option>
+      <option value="Project Manager">Project Manager</option>
+      <option value="ML Engineer">ML Engineer</option>
+      <option value="QA Engineer">QA Engineer</option>
+    </select>
+
+    <label for="department">Department</label>
+    <select name="department" id="department" required>
+      <option value="">Select</option>
+      <option value="IT">IT</option>
+      <option value="HR">HR</option>
+      <option value="Finance">Finance</option>
+      <option value="Operations">Operations</option>
+      <option value="Marketing">Marketing</option>
+      <option value="R&D">R&D</option>
+    </select>
+
+    <button type="submit">Predict Salary</button>
+  </form>
+
+  {% if prediction_text %}
+  <div class="result">{{ prediction_text }}</div>
+  {% endif %}
+</body>
+</html>
